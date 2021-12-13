@@ -31,6 +31,8 @@ public:
 
     double C(const int& k, const int& n, const int& m) const;
 
+    double getC(const int& k, const int& n, const int& m) const;
+
     double fourierSum(const double& x, const double& y, const double& z) const;
 };
 

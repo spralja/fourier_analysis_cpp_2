@@ -51,6 +51,10 @@ double FourierAnalysis::fourierSum(const double &x, const double &y, const doubl
     return 2 * sum;
 }
 
+double FourierAnalysis::getC(const int& k, const int& n, const int& m) const {
+    return coefficients.get(k, n, m);
+}
+
 
 
 
