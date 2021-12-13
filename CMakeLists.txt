@@ -3,4 +3,4 @@ project(fourier_analysis_cpp_2)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(fourier_analysis_cpp_2 main.cpp)
+add_executable(fourier_analysis_cpp_2 main.cpp FourierAnalysis.cpp FourierAnalysis.h TrigonometricFunctions.cpp TrigonometricFunctions.h CoefficientCollection.cpp CoefficientCollection.h)
