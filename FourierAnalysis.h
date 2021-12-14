@@ -12,6 +12,8 @@
 #include "TrigonometricFunctions.h"
 #include "CoefficientCollection.h"
 
+#include <vector>
+
 class FourierAnalysis {
 public:
     const double a_phi, b_phi, a_theta, b_theta;
@@ -24,7 +26,6 @@ public:
     FourierAnalysis(const int& n_phi, const int& n_theta, const int& n_sigma, const double& a_phi = -M_PI / 2,
                     const double& b_phi = M_PI / 2, const double& a_theta = 0, const double& b_theta = 2 * M_PI);
 
-
     double phi(const int& index) const;
 
     double theta(const int& index) const;
@@ -34,6 +35,8 @@ public:
     double getC(const int& k, const int& n, const int& m) const;
 
     double fourierSum(const double& x, const double& y, const double& z) const;
+
+    friend class TrigonometricFunctions;
 };
 
 

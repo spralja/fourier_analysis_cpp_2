@@ -6,35 +6,46 @@
 #include "FourierAnalysis.h"
 
 TrigonometricFunctions::TrigonometricFunctions(const FourierAnalysis *parent): parent(parent) {
-    const int& n_phi = parent->n_phi;
-    const int& n_theta = parent->n_theta;
-    for(int i = 0; i < n_phi; ++i) {
-        const double phi = parent->phi(i);
-        sinValues[phi] = std::sin(phi);
-        cosValues[phi] = std::cos(phi);
-        tanValues[phi] = std::tan(phi);
+    sinPhiValues.reserve(parent->n_phi);
+    cosPhiValues.reserve(parent->n_phi);
+    tanPhiValues.reserve(parent->n_phi);
+    sinThetaValues.reserve(parent->n_theta);
+    cosThetaValues.reserve(parent->n_theta);
+    tanThetaValues.reserve(parent->n_theta);
+    for(int phi_index = 0; phi_index < parent->n_phi; ++phi_index) {
+        sinPhiValues[phi_index] = std::sin(parent->phi(phi_index));
+        cosPhiValues[phi_index] = std::cos(parent->phi(phi_index));
+        tanPhiValues[phi_index] = std::tan(parent->phi(phi_index));
     }
 
-    for(int i = 0; i < n_theta; ++i) {
-        const double theta = parent->theta(i);
-        sinValues[theta] = std::sin(theta);
-        cosValues[theta] = std::cos(theta);
-        tanValues[theta] = std::tan(theta);
+    for(int theta_index = 0; theta_index < parent->n_theta; ++theta_index) {
+        sinThetaValues[theta_index] = std::sin(parent->theta(theta_index));
+        cosThetaValues[theta_index] = std::cos(parent->theta(theta_index));
+        tanThetaValues[theta_index] = std::tan(parent->theta(theta_index));
     }
 }
 
-const double& TrigonometricFunctions::sin(const double &beta) const {
-    return sinValues[beta];
+const double &TrigonometricFunctions::sinPhi(const int &index) const {
+    return sinPhiValues[index];
 }
 
-const double &TrigonometricFunctions::cos(const double &beta) const {
-    return cosValues[beta];
+const double &TrigonometricFunctions::cosPhi(const int &index) const {
+    return cosPhiValues[index];
 }
 
-const double &TrigonometricFunctions::tan(const double &beta) const {
-    return tanValues[beta];
+const double &TrigonometricFunctions::tanPhi(const int &index) const {
+    return tanPhiValues[index];
 }
 
+const double &TrigonometricFunctions::sinTheta(const int &index) const {
+    return sinThetaValues[index];
+}
 
+const double &TrigonometricFunctions::cosTheta(const int &index) const {
+    return cosThetaValues[index];
+}
 
+const double &TrigonometricFunctions::tanTheta(const int &index) const {
+    return tanThetaValues[index];
+}
 

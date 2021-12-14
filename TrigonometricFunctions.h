@@ -5,7 +5,7 @@
 #ifndef FOURIER_ANALYSIS_CPP_2_TRIGONOMETRICFUNCTIONS_H
 #define FOURIER_ANALYSIS_CPP_2_TRIGONOMETRICFUNCTIONS_H
 
-#include <unordered_map>
+#include <vector>
 
 class FourierAnalysis;
 
@@ -13,15 +13,16 @@ class TrigonometricFunctions {
 private:
     const FourierAnalysis* parent;
 
-    mutable std::unordered_map<double, double> sinValues;
-    mutable std::unordered_map<double, double> cosValues;
-    mutable std::unordered_map<double, double> tanValues;
+    std::vector<double> sinPhiValues, cosPhiValues, tanPhiValues, sinThetaValues, cosThetaValues, tanThetaValues;
 public:
     explicit TrigonometricFunctions(const FourierAnalysis* parent);
 
-    const double& sin(const double& beta) const;
-    const double& cos(const double& beta) const;
-    const double& tan(const double& beta) const;
+    [[nodiscard]] const double& sinPhi(const int& index) const;
+    [[nodiscard]] const double& cosPhi(const int& index) const;
+    [[nodiscard]] const double& tanPhi(const int& index) const;
+    [[nodiscard]] const double& sinTheta(const int& index) const;
+    [[nodiscard]] const double& cosTheta(const int& index) const;
+    [[nodiscard]] const double& tanTheta(const int& index) const;
 };
 
 

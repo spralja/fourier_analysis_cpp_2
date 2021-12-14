@@ -20,14 +20,14 @@ double FourierAnalysis::theta(const int& index) const {
 
 double FourierAnalysis::C(const int& k, const int& n, const int& m) const {
     double sum = 0.0;
-    for(int i = 0; i < n_phi; ++i)
-        for(int j = 0; j < n_theta; ++j)
+    for(int phi_index = 0; phi_index < n_phi; ++phi_index)
+        for(int theta_index = 0; theta_index < n_theta; ++theta_index)
             sum += 1 / (
-                    m * m * trigs.sin(phi(i)) * trigs.tan(phi(i)) +
-                    2 * m * trigs.sin(phi(i)) * (k * trigs.cos(theta(j)) + n * trigs.sin(theta(j))) +
-                    trigs.cos(phi(i)) *
-                    (k * trigs.cos(theta(j)) + n * trigs.sin(theta(j))) *
-                            (k * trigs.cos(theta(j)) + n * trigs.sin(theta(j)))
+                    m * m * trigs.sinPhi(phi_index) * trigs.tanPhi(phi_index) +
+                    2 * m * trigs.sinPhi(phi_index) * (k * trigs.cosTheta(theta_index) + n * trigs.sinTheta(theta_index)) +
+                    trigs.cosPhi(phi_index) *
+                    (k * trigs.cosTheta(theta_index) + n * trigs.sinTheta(theta_index)) *
+                            (k * trigs.cosTheta(theta_index) + n * trigs.sinTheta(theta_index))
                     );
 
     sum *= -1 / (std::sqrt(2 * M_PI) * std::sqrt(2 * M_PI) * std::sqrt(2 * M_PI)) * d_phi * d_theta;
