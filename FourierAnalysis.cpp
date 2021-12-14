@@ -5,9 +5,9 @@
 #include "FourierAnalysis.h"
 
 FourierAnalysis::FourierAnalysis(const int &n_phi, const int &n_theta, const int& n_sigma, const double &a_phi, const double &b_phi,
-                                 const double &a_theta, const double &b_theta)
+                                 const double &a_theta, const double &b_theta, const double& mu)
                                  : n_phi(n_phi), n_theta(n_theta), n_sigma(n_sigma), a_phi(a_phi), b_phi(b_phi),
-                                 a_theta(a_theta), b_theta(b_theta), d_phi((b_phi - a_phi) / n_phi),
+                                 a_theta(a_theta), b_theta(b_theta), d_phi((b_phi - a_phi) / n_phi), mu(mu),
                                  d_theta((b_theta - a_theta) / n_theta), trigs(this), coefficients(this) {}
 
 double FourierAnalysis::phi(const int& index) const {
@@ -30,7 +30,7 @@ double FourierAnalysis::C(const int& k, const int& n, const int& m) const {
                             (k * trigs.cosTheta(theta_index) + n * trigs.sinTheta(theta_index))
                     );
 
-    sum *= -1 / (std::sqrt(2 * M_PI) * std::sqrt(2 * M_PI) * std::sqrt(2 * M_PI)) * d_phi * d_theta;
+    sum *= mu * d_phi * d_theta;
     return sum;
 }
 
